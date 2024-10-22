@@ -1,5 +1,6 @@
 # Oficina de Go (Golang) 🚀
 ### Aprenda Golang com Testes (TDD) - Venha conhecer nossa comunidade - [brazilitremote.org](https://www.brazilitremote.org/)
+### 4º Trimestre de 2024
 
 
 ## 📚 Conteúdo da Oficina
