@@ -14,7 +14,7 @@ A oficina busca fortalecer a rede de contatos para trabalho remoto e imigração
 ## 🤝 Como Será a Nossa Interação
 
 - **Discord:** Canal de voz exclusivo para participantes que se inscreverem pelo link abaixo.
-- **Transmissão ao Vivo:** Para quem prefere apenas assistir, as sessões estarão disponíveis na [Twitch](https://www.twitch.tv) e no [YouTube](https://www.youtube.com). Interação via chat é bem-vinda!
+- **Transmissão ao Vivo:** Para quem prefere apenas assistir, as sessões estarão disponíveis no [YouTube](https://www.youtube.com). Interação via chat é bem-vinda!
 - **Limite de Vagas:** 10 pessoas.
 
 ## 👥 Quem Deve Se Inscrever?
@@ -30,11 +30,6 @@ O mentor possui:
 - **12 anos de experiência** como desenvolvedor backend.
 - **Experiência em empresas como Ubisoft Canadá.**
 - **Mais de 8 anos como Engenheiro DevOps e recrutador** para vagas internacionais remotas.
-
-## 🌎 Oportunidades de Trabalho
-
-- **Vagas Remotas para Backend, DevOps e SRE** no Canadá, com salários entre R$ 15.000 a R$ 20.000/mês (varia conforme a experiência).
-- **Exemplo de Vaga:** [Formulário de Inscrição para Vagas](https://docs.google.com/forms/d/e/1FAIpQLSefyqoDpOXhBKuKc8VhUCX96iLNoNNn8KoSjmjMTObzCodmKg/viewform)
 
 ## 📅 Cronograma
 
