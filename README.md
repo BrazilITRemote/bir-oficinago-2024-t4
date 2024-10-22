@@ -1,5 +1,5 @@
-# Oficina de Go (Golang): Aprenda Golang com Testes (TDD) - Totalmente Gratuito 🚀
-#### Website: [brazilitremote.org](https://www.brazilitremote.org/)
+# Oficina de Go (Golang)
+### Aprenda Golang com Testes (TDD) - Totalmente Gratuito - Website: [brazilitremote.org](https://www.brazilitremote.org/) 🚀
 
 ## 📚 Conteúdo da Oficina
 
