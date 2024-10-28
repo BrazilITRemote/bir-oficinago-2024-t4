@@ -6,5 +6,8 @@ import (
 
 func main() {
 	// Primeiro exemplo
-	hello_world.Hello()
+	hello_world.Hello(
+		"Alexandre",
+		"portuguese",
+	)
 }
