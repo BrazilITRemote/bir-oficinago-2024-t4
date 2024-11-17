@@ -20,7 +20,7 @@ func SumAll(numbersToSum ...[]int) (sums []int) {
 // Sums all items in a collection, except for the first one (the "head")
 func SumAllTails(numbersToSum ...[]int) (sums []int) {
 	for _, numbers := range numbersToSum {
-		if len(numbers) == 0 {
+		if len(numbers) == 0 { // empty slices have no tail!
 			sums = append(sums, 0)
 		} else {
 			tail := numbers[1:] // slice[low:high]

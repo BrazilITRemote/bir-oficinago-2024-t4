@@ -30,20 +30,31 @@ func TestSumAll(t *testing.T) {
 }
 
 func TestSumAllTails(t *testing.T) {
+
+	// We could've defined a new func outside TestSumAllTails scope.
+	//
+	// Although, doing it this way, binds the function to the variable's scope,
+	// reducing the surface are of our API and making it so it cannot be used by other functions.
+	//
+	// Hiding variables and functions that don't need to be exported is an
+	// important design consideration.
+	checkSums := func(t testing.TB, got, want []int) {
+		t.Helper()
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	}
+
 	t.Run("make the sums of some slices", func(t *testing.T) {
 		got := SumAllTails([]int{1, 2}, []int{0, 9})
 		want := []int{2, 9}
 
-		if !reflect.DeepEqual(got, want) {
-			t.Errorf("got %v want %v", got, want)
-		}
+		checkSums(t, got, want)
 	})
 	t.Run("safely sum empty slices", func(t *testing.T) {
 		got := SumAllTails([]int{}, []int{0, 9})
 		want := []int{0, 9}
 
-		if !reflect.DeepEqual(got, want) {
-			t.Errorf("got %v want %v", got, want)
-		}
+		checkSums(t, got, want)
 	})
 }
