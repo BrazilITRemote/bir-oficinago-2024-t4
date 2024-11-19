@@ -1,4 +1,4 @@
-package iteration // Iteração / Laços de Repetições
+package iteration // Refactor
 
 import "testing"
 
