@@ -1,4 +1,4 @@
-package integers // Inteiros, Formatação de erros
+package integers // Go Doc
 
 import "testing"
 
@@ -8,9 +8,5 @@ func TestAdder(t *testing.T) {
 
 	if sum != expected {
 		t.Errorf("expected '%d' but got '%d'", expected, sum)
-		/* %q imprimir strings, %d imprimir inteiro.
-		Formatação de erros
-		https://pkg.go.dev/fmt#hdr-Printing
-		*/
 	}
 }
