@@ -1,9 +1,6 @@
-package main // switch, declaração de variáveis (constantes) em bloco
+package main // Aplicando S.O.L.I.D, E parâmetros de resultado nomeados
 
 import "fmt"
-
-/*	declaração de variáveis (constantes) em bloco
-	https://go.dev/ref/spec#Variable_declarations */
 
 const (
 	spanish = "Spanish"
@@ -14,26 +11,29 @@ const (
 	frenchHelloPrefix  = "Bonjour, "
 )
 
+// Aplicando S.O.L.I.D: S — Single Responsiblity Principle (Princípio da responsabilidade única)
 func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
 	}
 
-	prefix := englishHelloPrefix
+	return greetingPrefix(language) + name
+}
 
-	/*	switch alvo { case 0: realize case 1: realize default: realize }
-		https://go.dev/doc/effective_go#if
-		https://go.dev/doc/effective_go#switch
-		https://go.dev/ref/spec#If_statements
-		https://go.dev/ref/spec#Switch_statements */
+/* Parâmetros de resultado nomeados
+https://go.dev/wiki/CodeReviewComments#named-result-parameters
+https://go.dev/doc/effective_go#named-results*/
 
+func greetingPrefix(language string) (prefix string) {
 	switch language {
-	case spanish:
-		prefix = spanishHelloPrefix
 	case french:
 		prefix = frenchHelloPrefix
+	case spanish:
+		prefix = spanishHelloPrefix
+	default:
+		prefix = englishHelloPrefix
 	}
-	return prefix + name
+	return
 }
 
 func main() {

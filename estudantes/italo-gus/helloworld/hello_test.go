@@ -1,4 +1,4 @@
-package main // switch, declaração de variáveis (constantes) em bloco
+package main // Aplicando S.O.L.I.D, E parâmetros de resultado nomeados
 
 import (
 	"testing"
