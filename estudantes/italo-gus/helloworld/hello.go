@@ -1,13 +1,12 @@
-package main // Definição do pacote
+package main
 
-/* fmt O pacote fmt implementa E/S formatadas com funções análogas a printf e scanf do C. Os 'verbos' de formato são derivados do C, mas são mais simples.
-https://pkg.go.dev/fmt@go1.23.3
-*/
+import "fmt"
 
-import "fmt" // Importar Biblioteca / Pacote
+// Aplicando S.O.L.I.D: S — Single Responsiblity Principle (Princípio da responsabilidade única)
+func Hello() string {
+	return "Hello, world"
+}
 
-// Criação de Função func nome_da_Função (parâmetros nome e tipo ) tipo de retorno {}
-// Criação de Função main (sem parâmetros) sem retorno {}
 func main() {
-	fmt.Println("Hello, world") // imprimir em tela (stdout [saída padrão do terminal]) o texto "Hello, world" // https://pkg.go.dev/fmt#Println
+	fmt.Println(Hello())
 }
