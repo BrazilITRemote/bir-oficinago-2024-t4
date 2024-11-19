@@ -1,12 +1,12 @@
-package main // TDD
+package main // tdd com argumento
 
 import "fmt"
 
-// Aplicando S.O.L.I.D: S — Single Responsiblity Principle (Princípio da responsabilidade única)
-func Hello() string {
-	return "Hello, world"
+// Criação da Função Hello (com parâmetros ) tipo de retorno string {}
+func Hello(name string) string {
+	return "Hello, " + name
 }
 
 func main() {
-	fmt.Println(Hello())
+	fmt.Println(Hello("world")) // imprimir em tela (stdout [saída padrão do terminal]) o retorno da função Hello passando argumento
 }
