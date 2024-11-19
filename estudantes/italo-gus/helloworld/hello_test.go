@@ -1,11 +1,11 @@
-package main // tdd com argumento
+package main // const
 
 import (
 	"testing"
 )
 
 func TestHello(t *testing.T) {
-	got := Hello("Chris") // variáve que recebe o retorno do resultado da função a ser testada, passando argumento para função
+	got := Hello("Chris")
 	want := "Hello, Chris"
 
 	if got != want {

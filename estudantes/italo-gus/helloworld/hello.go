@@ -1,12 +1,13 @@
-package main // tdd com argumento
+package main // const
 
 import "fmt"
 
-// Criação da Função Hello (com parâmetros ) tipo de retorno string {}
+const englishHelloPrefix = "Hello, " // Definindo constante
+
 func Hello(name string) string {
-	return "Hello, " + name
+	return englishHelloPrefix + name
 }
 
 func main() {
-	fmt.Println(Hello("world")) // imprimir em tela (stdout [saída padrão do terminal]) o retorno da função Hello passando argumento
+	fmt.Println(Hello("world"))
 }
