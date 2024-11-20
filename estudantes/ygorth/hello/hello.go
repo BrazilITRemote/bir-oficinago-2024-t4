@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package hello
 
 const spanish = "Spanish"
 const french = "French"
@@ -27,11 +25,4 @@ func greetingPrefix(language string) (prefix string) {
 		prefix = englishHelloPrefix
 	}
 	return
-}
-
-func main() {
-    fmt.Println(Hello("world", ""))           // Default: Hello, world
-    fmt.Println(Hello("Control-C", spanish))       // Spanish: Hola, Ygor
-    fmt.Println(Hello("Marie", french))       // French: Bonjour, Marie
-    fmt.Println(Hello("", ""))                // Default: Hello, World
 }
