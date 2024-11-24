@@ -1,15 +1,12 @@
-package main
+package hello
 
-import "fmt"
+const spanish = "Spanish"
+const french = "French"
+const englishHelloPrefix = "Hello, "
+const spanishHelloPrefix = "Hola, "
+const frenchHelloPrefix = "Bonjour, "
 
-const (
-	spanish            = "Spanish"
-	french             = "French"
-	englishHelloPrefix = "Hello, "
-	spanishHelloPrefix = "Hola, "
-	frenchHelloPrefix  = "Bonjour, "
-)
-
+// Hello returns a personalised greeting in a given language.
 func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
@@ -28,8 +25,4 @@ func greetingPrefix(language string) (prefix string) {
 		prefix = englishHelloPrefix
 	}
 	return
-}
-
-func main() {
-	fmt.Println(Hello("World", ""))
 }

@@ -1,4 +1,4 @@
-package main
+package helloWorld
 
 import "testing"
 
@@ -11,6 +11,12 @@ func TestHello(t *testing.T) {
 
 	t.Run("empty string defaults to 'world'", func(t *testing.T) {
 		got := Hello("", "")
+		want := "Hello, World"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("empty string defaults language'", func(t *testing.T) {
+		got := Hello1("", "World")
 		want := "Hello, World"
 		assertCorrectMessage(t, got, want)
 	})
