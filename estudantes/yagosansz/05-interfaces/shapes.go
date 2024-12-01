@@ -13,6 +13,8 @@ type Rectangle struct {
 //
 // It's a convention that the receiverName is the first letter
 // of the ReceiverType
+//
+// Question: In this case who would be the sender?
 func (r Rectangle) Area() float64 {
 	return r.Width * r.Height
 }
