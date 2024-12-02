@@ -16,12 +16,15 @@ func TestPerimeter(t *testing.T) {
 
 func TestArea(t *testing.T) {
 
+	// This is defining a slice of anonymous structs.
+	// It has to be instantiated right after being defined!
 	areaTests := []struct {
 		shape Shape
 		want  float64
 	}{
 		{Rectangle{12, 6}, 72.0},
 		{Circle{10}, 314.1592653589793},
+		{Triangle{12, 6}, 36.0},
 	}
 
 	for _, tt := range areaTests {
