@@ -2,6 +2,14 @@ package main
 
 import "math"
 
+// In Go *interface resolution is implicit*
+//
+// If the type you pass in matches what the interface
+// is asking for, it will compile.
+type Shape interface {
+	Area() float64
+}
+
 // Using a struct helps us to convey our intentions
 // more clearly!
 type Rectangle struct {
