@@ -1,18 +1,18 @@
 package main
 
-import "fmt"
-
 type Wallet struct {
 	balance int
 }
 
-// w Wallet is a copy of the original receiver!
-// In our case the "original" receiver is coming from tests.
-func (w Wallet) Deposit(amount int) {
-	fmt.Printf("address of balance in Deposit is %p \n", &w.balance)
+// IMPORTANT: Pointer dereferencing is to get the value stored in memory!
+// We don't need to do `(*w).balance` (explicit dereference) because Go will
+// automatically do that for us.
+func (w *Wallet) Deposit(amount int) {
 	w.balance += amount
 }
 
-func (w Wallet) Balance() int {
+// Technically, this one would work with receiving a copy and not a pointer,
+// but by convetion we should keep method receiver types the same for consistency!
+func (w *Wallet) Balance() int {
 	return w.balance
 }
