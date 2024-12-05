@@ -38,7 +38,7 @@ func assertCorrectMessage(t testing.TB, repeated, expected string) {
 func ExampleRepeat() {
 	characters := Repeat("c", 3)
 	fmt.Println(characters)
-	// Output: ccc
+	/// Output: ccc
 }
 
 func BenchmarkRepeat(b *testing.B) {
