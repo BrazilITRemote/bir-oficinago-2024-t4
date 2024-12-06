@@ -23,6 +23,10 @@ func (w *Wallet) Deposit(amount Bitcoin) {
 	w.balance += amount
 }
 
+func (w *Wallet) Withdraw(amount Bitcoin) {
+	w.balance -= amount
+}
+
 // Technically, this one would work with receiving a copy and not a pointer,
 // but by convetion we should keep method receiver types the same for consistency!
 func (w *Wallet) Balance() Bitcoin {
