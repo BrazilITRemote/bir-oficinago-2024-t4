@@ -1,9 +1,7 @@
 package structs_methods_interfaces
 
 import (
-	"fmt"
 	"math"
-	"reflect"
 )
 
 type Shape interface {
@@ -15,13 +13,13 @@ type Rectangle struct {
 	Height float64
 }
 
-func Perimeter(rectangle Rectangle) float64 {
-	return 2 * (rectangle.Width + rectangle.Height)
+func (r Rectangle) Area() float64 {
+	// fmt.Printf("BIR - type of r: %s\n", reflect.TypeOf(r))
+	return r.Width * r.Height
 }
 
-func (r Rectangle) Area() float64 {
-	fmt.Printf("BIR - type of r: %s\n", reflect.TypeOf(r))
-	return r.Width * r.Height
+func Perimeter(rectangle Rectangle) float64 {
+	return 2 * (rectangle.Width + rectangle.Height)
 }
 
 type Circle struct {
@@ -29,6 +27,15 @@ type Circle struct {
 }
 
 func (c Circle) Area() float64 {
-	fmt.Printf("BIR - type of c: %s\n", reflect.TypeOf(c))
+	// fmt.Printf("BIR - type of c: %s\n", reflect.TypeOf(c))
 	return math.Pi * c.Radius * c.Radius
+}
+
+type Triangle struct {
+	Base   float64
+	Height float64
+}
+
+func (t Triangle) Area() float64 {
+	return (t.Base * t.Height) * 0.5
 }
