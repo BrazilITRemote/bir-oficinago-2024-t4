@@ -1,14 +1,5 @@
-package structs // struct - estrutura
+package structs // Declarações de métodos
 
-/* Declarando um tipo baseado na criação de uma estrutura
-
-type Nome_do_tipo struct {
-campo1_da_estrutura typo_de_dados_do_campo1_da_estrutura
-campon_da_estrutura typo_de_dados_do_campon_da_estrutura   }
-
-https://go.dev/ref/spec#Types
-https://go.dev/ref/spec#Struct_types
-*/
 type Rectangle struct {
 	Width  float64
 	Height float64
@@ -25,11 +16,28 @@ func Area(width, height float64) float64 {
 }
 */
 
-// acessar campos de uma estrutura variáve.campo_da_estrutura
-func Perimeter(rectangle Rectangle) float64 {
+/* Declarações de métodos
+func (nome_do_receptor tipo_do_receptor) Nome_do_método(parâmetros) tipo_do_retorno { bloco_do_método }
+https://go.dev/ref/spec#Method_declarations
+https://go.dev/doc/effective_go#interface_methods
+*/
+
+func (rectangle Rectangle) Perimeter() float64 {
 	return 2 * (rectangle.Width + rectangle.Height)
 }
 
+/*
+func Perimeter(rectangle Rectangle) float64 {
+	return 2 * (rectangle.Width + rectangle.Height)
+}
+*/
+
+func (rectangle Rectangle) Area() float64 {
+	return rectangle.Width * rectangle.Height
+}
+
+/*
 func Area(rectangle Rectangle) float64 {
 	return rectangle.Width * rectangle.Height
 }
+*/
