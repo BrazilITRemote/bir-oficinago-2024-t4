@@ -1,8 +1,29 @@
-package structs // Declarações de métodos
+package structs // Interfaces
+
+import "math"
+
+/* math O pacote math fornece constantes básicas e funções matemáticas.
+Este pacote não garante resultados idênticos em bits em todas as arquiteturas.
+https://pkg.go.dev/math@go1.23.4
+*/
+
+/*
+Ao incorporar interfaces, métodos com os mesmos nomes devem ter assinaturas idênticas .
+https://go.dev/ref/spec#Interface_types
+https://go.dev/doc/effective_go#interface_methods
+*/
+// Criando tipo Shape, que é uma interface { definindo o método Area com tipo de retorno float64}
+type Shape interface {
+	Area() float64
+}
 
 type Rectangle struct {
 	Width  float64
 	Height float64
+}
+
+type Circle struct {
+	Radius float64
 }
 
 /*
@@ -16,14 +37,15 @@ func Area(width, height float64) float64 {
 }
 */
 
-/* Declarações de métodos
-func (nome_do_receptor tipo_do_receptor) Nome_do_método(parâmetros) tipo_do_retorno { bloco_do_método }
-https://go.dev/ref/spec#Method_declarations
-https://go.dev/doc/effective_go#interface_methods
+/*
+	É uma convenção em Go que a variável receptora seja a primeira letra do tipo.
+	https://go.dev/ref/spec#Identifiers
+	https://google.github.io/styleguide/go/decisions#receiver-names
+	https://google.github.io/styleguide/go/decisions.html#single-letter-variable-names
 */
 
-func (rectangle Rectangle) Perimeter() float64 {
-	return 2 * (rectangle.Width + rectangle.Height)
+func (r Rectangle) Perimeter() float64 {
+	return 2 * (r.Width + r.Height)
 }
 
 /*
@@ -32,8 +54,8 @@ func Perimeter(rectangle Rectangle) float64 {
 }
 */
 
-func (rectangle Rectangle) Area() float64 {
-	return rectangle.Width * rectangle.Height
+func (r Rectangle) Area() float64 { //----   Método definido pela interface
+	return r.Width * r.Height
 }
 
 /*
@@ -41,3 +63,11 @@ func Area(rectangle Rectangle) float64 {
 	return rectangle.Width * rectangle.Height
 }
 */
+
+func (c Circle) Perimeter() float64 {
+	return math.Pi * (2 * c.Radius)
+}
+
+func (c Circle) Area() float64 { //---           Método definido pela interface
+	return math.Pi * (c.Radius * c.Radius)
+}
