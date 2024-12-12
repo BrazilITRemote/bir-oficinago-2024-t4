@@ -74,9 +74,10 @@ func TestArea(t *testing.T) {
 }
 */
 
+/*
 func TestArea(t *testing.T) {
 	// TableDrivenTests - aplicando Testes orientados por tabela
-	// https://go.dev/wiki/TableDrivenTests*/
+	// https://go.dev/wiki/TableDrivenTests
 
 	areaTests := []struct {
 		shape    Shape
@@ -96,4 +97,34 @@ func TestArea(t *testing.T) {
 		}
 	}
 
+}
+*/
+
+func TestArea(t *testing.T) {
+	// TableDrivenTests - aplicando Testes orientados por tabela
+	// e cada teste com nome
+	// https://go.dev/wiki/TableDrivenTests
+	// https://pkg.go.dev/testing#T.Run
+
+	areaTests := []struct {
+		name    string
+		shape   Shape
+		hasArea float64
+	}{
+		{name: "Rectangle", shape: Rectangle{Width: 12, Height: 6}, hasArea: 72.0},
+		{name: "Circle", shape: Circle{Radius: 10}, hasArea: 314.1592653589793},
+		{name: "Triangle", shape: Triangle{Base: 12, Height: 6}, hasArea: 36.0},
+	}
+
+	for _, tt := range areaTests {
+		// using tt.name from the case to use it as the `t.Run` test name
+		// usando tt.name de cada caso para usá-lo como o `t.Run`.nome_do_teste
+		t.Run(tt.name, func(t *testing.T) {
+			received := tt.shape.Area()
+			if received != tt.hasArea {
+				t.Errorf("%#v received %g expected %g", tt.shape, received, tt.hasArea)
+			}
+		})
+
+	}
 }
