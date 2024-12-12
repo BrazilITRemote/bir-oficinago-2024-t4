@@ -1,6 +1,8 @@
-package structs // Interfaces
+package structs // TableDrivenTests
 
-import "math"
+import (
+	"math"
+)
 
 /* math O pacote math fornece constantes básicas e funções matemáticas.
 Este pacote não garante resultados idênticos em bits em todas as arquiteturas.
@@ -24,6 +26,11 @@ type Rectangle struct {
 
 type Circle struct {
 	Radius float64
+}
+
+type Triangle struct {
+	Base   float64
+	Height float64
 }
 
 /*
@@ -70,4 +77,8 @@ func (c Circle) Perimeter() float64 {
 
 func (c Circle) Area() float64 { //---           Método definido pela interface
 	return math.Pi * (c.Radius * c.Radius)
+}
+
+func (t Triangle) Area() float64 { //---          Método definido pela interface
+	return (t.Base * t.Height) * 0.5
 }

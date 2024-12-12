@@ -1,4 +1,4 @@
-package structs // Interfaces
+package structs // TableDrivenTests
 
 import (
 	"testing"
@@ -45,6 +45,7 @@ func TestArea(t *testing.T) {
 }
 */
 
+/*
 func TestArea(t *testing.T) {
 	// função de teste utilizando a interface shape como parâmetro, declarada como variável
 	checkArea := func(t testing.TB, shape Shape, expected float64) {
@@ -64,5 +65,35 @@ func TestArea(t *testing.T) {
 		circle := Circle{10}
 		checkArea(t, circle, 314.1592653589793)
 	})
+
+	t.Run("triangle", func(t *testing.T) {
+		triangle := Triangle{12.0, 6.0}
+		checkArea(t, triangle, 36)
+	})
+
+}
+*/
+
+func TestArea(t *testing.T) {
+	// TableDrivenTests - aplicando Testes orientados por tabela
+	// https://go.dev/wiki/TableDrivenTests*/
+
+	areaTests := []struct {
+		shape    Shape
+		expected float64
+	}{
+		{Rectangle{12, 6}, 72.0},
+		{Circle{10}, 314.1592653589793},
+		{Triangle{12, 6}, 36.0},
+	}
+
+	for _, tt := range areaTests {
+		received := tt.shape.Area()
+		//fmt.Printf("BIR - type of TT: %s\n", reflect.TypeOf(tt.shape)) // Verificação de tipo
+		//fmt.Printf("BIR - Testando: %T \n", tt.shape) // Impressão de tipo
+		if received != tt.expected {
+			t.Errorf("expected '%g' but received '%g'", tt.expected, received)
+		}
+	}
 
 }
