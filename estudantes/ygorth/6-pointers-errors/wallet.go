@@ -1,6 +1,9 @@
 package pointers_errors
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func (b Bitcoin) String() string {
 	return fmt.Sprintf("%d BTC", b)
@@ -21,6 +24,14 @@ func (w *Wallet) Balance() Bitcoin {
 	return w.balance
 }
 
-func (w *Wallet) Withdraw(amount Bitcoin) {
+var ErrInsufficientFunds = errors.New("cannot withdraw, insufficient funds")
+
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+
+	if amount > w.balance {
+		return ErrInsufficientFunds
+	}
+
 	w.balance -= amount
+	return nil
 }
