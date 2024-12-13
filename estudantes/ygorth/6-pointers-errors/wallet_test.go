@@ -1,22 +1,36 @@
 package pointers_errors
 
 import (
-	"fmt"
 	"testing"
 )
 
 func TestWallet(t *testing.T) {
-	wallet := Wallet{}
 
-	wallet.Deposit(10)
+	t.Run("deposit", func(t *testing.T) {
+		wallet := Wallet{}
 
-	got := wallet.Balance()
+		wallet.Deposit(Bitcoin(10))
 
-	fmt.Printf("address of balance in test is %p \n", &wallet.balance)
+		got := wallet.Balance()
 
-	want := 10
+		want := Bitcoin(10)
 
-	if got != want {
-		t.Errorf("got %d want %d", got, want)
-	}
+		if got != want {
+			t.Errorf("got %s want %s", got, want)
+		}
+	})
+
+	t.Run("withdraw", func(t *testing.T) {
+		wallet := Wallet{balance: Bitcoin(20)}
+
+		wallet.Withdraw(Bitcoin(10))
+
+		got := wallet.Balance()
+
+		want := Bitcoin(10)
+
+		if got != want {
+			t.Errorf("got %s want %s", got, want)
+		}
+	})
 }
