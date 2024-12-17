@@ -1,4 +1,4 @@
-package maps_0 // Evitar erro do tipo pânico em tempo de execução devido tipo dados mapa nula (nil)
+package maps_0 // Refactor - Refatoração
 
 import (
 	"testing"
@@ -35,6 +35,7 @@ func TestSearch(t *testing.T) {
 
 }
 
+/*
 func TestAdd(t *testing.T) {
 	dictionary := Dictionary{}
 	// Nunca deve inicializar uma variável do tipo dados mapa nula (nil),
@@ -60,6 +61,26 @@ func TestAdd(t *testing.T) {
 	}
 
 	assertStrings(t, received, expected)
+}
+*/
+
+func TestAdd(t *testing.T) {
+	dictionary := Dictionary{}
+	word := "test"
+	definition := "this is just a test"
+
+	dictionary.Add(word, definition)
+	assertDefinition(t, dictionary, word, definition)
+}
+
+func assertDefinition(t testing.TB, dictionary Dictionary, word, definition string) {
+	t.Helper()
+
+	received, err := dictionary.Search(word)
+	if err != nil {
+		t.Fatal("should find added word:", err)
+	}
+	assertStrings(t, received, definition)
 }
 
 func assertStrings(t testing.TB, received, expected string) {

@@ -1,4 +1,4 @@
-package maps_0 // Evitar erro do tipo pânico em tempo de execução devido tipo dados mapa nula (nil)
+package maps_0 // Refactor - Refatoração
 
 import "errors"
 
