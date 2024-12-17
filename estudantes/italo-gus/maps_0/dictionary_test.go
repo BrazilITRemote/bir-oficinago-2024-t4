@@ -1,19 +1,8 @@
-package maps_0 // Refactor - Refatoração
+package maps_0 // Função de cadastro no mapa, aprimorada para verificar se a chave (índice) já é cadastrada
 
 import (
 	"testing"
 )
-
-/*
-func TestSearch(t *testing.T) {
-	dictionary := Dictionary{"test": "this is just a test"}
-
-	received := dictionary.Search("test")
-	expected := "this is just a test"
-
-	assertStrings(t, received, expected)
-}
-*/
 
 func TestSearch(t *testing.T) {
 	dictionary := Dictionary{"test": "this is just a test"}
@@ -36,41 +25,36 @@ func TestSearch(t *testing.T) {
 }
 
 /*
-func TestAdd(t *testing.T) {
-	dictionary := Dictionary{}
-	// Nunca deve inicializar uma variável do tipo dados mapa nula (nil),
-	// pois tipo de dadosmapa nil causarão um erro do tipo pânico em tempo de execução.
-	// conforme https://go.dev/blog/maps devido a
-	// "Um valor de mapa é um ponteiro para uma estrutura runtime.hmap."
-	// citado em https://dave.cheney.net/2017/04/30/if-a-map-isnt-a-reference-variable-what-is-it
-	//
-	// var dictionary map[string]string           (forma errada)
-	//
-	// Em vez disso, deve-se inicializar um mapa vazio {}
-	// var dictionary = map[string]string{}	      (forma correta 1)
-	//
-	// Ou usando a palavra-chave make para criar um mapa
-	// var dictionary = make(map[string]string)   (forma correta 2)
+	func TestAdd(t *testing.T) {
+		dictionary := Dictionary{}
+		word := "test"
+		definition := "this is just a test"
 
-	dictionary.Add("test", "this is just a test")
-
-	expected := "this is just a test"
-	received, err := dictionary.Search("test")
-	if err != nil {
-		t.Fatal("should find added word:", err)
+		dictionary.Add(word, definition)
+		assertDefinition(t, dictionary, word, definition)
 	}
-
-	assertStrings(t, received, expected)
-}
 */
-
 func TestAdd(t *testing.T) {
-	dictionary := Dictionary{}
-	word := "test"
-	definition := "this is just a test"
+	t.Run("new word", func(t *testing.T) {
+		dictionary := Dictionary{}
+		word := "test"
+		definition := "this is just a test"
 
-	dictionary.Add(word, definition)
-	assertDefinition(t, dictionary, word, definition)
+		err := dictionary.Add(word, definition)
+
+		assertError(t, err, nil)
+		assertDefinition(t, dictionary, word, definition)
+	})
+
+	t.Run("existing word", func(t *testing.T) {
+		word := "test"
+		definition := "this is just a test"
+		dictionary := Dictionary{word: definition}
+		err := dictionary.Add(word, "new test")
+
+		assertError(t, err, ErrWordExists)
+		assertDefinition(t, dictionary, word, definition)
+	})
 }
 
 func assertDefinition(t testing.TB, dictionary Dictionary, word, definition string) {
