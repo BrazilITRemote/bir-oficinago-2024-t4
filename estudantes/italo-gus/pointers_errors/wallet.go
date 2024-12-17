@@ -74,3 +74,8 @@ func (w *Wallet) Balance() Bitcoin {
 	fmt.Printf("Balance is : %s \n", w.balance)
 	return w.balance
 }
+
+func (w *Wallet) Withdraw(amount Bitcoin) {
+	fmt.Printf("memory address of balance in Withdraw is %p \n", &w.balance)
+	w.balance -= amount
+}
