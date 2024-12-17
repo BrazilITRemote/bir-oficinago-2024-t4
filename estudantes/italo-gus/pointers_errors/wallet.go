@@ -1,9 +1,33 @@
-package pointers_erros // Ponteiros e Erros
+package pointers_erros // Delcaração de tipo de dados
 import "fmt"
 
+// Delcaração de tipo de dados
+// https://go.dev/ref/spec#Type_declarations
+
+type Bitcoin int
+
+type Wallet struct {
+	balance Bitcoin
+}
+
+//// https://pkg.go.dev/fmt#Stringer
+// A interface que é definida no pacote fmt
+// type Stringer interface {
+//     String() string
+// }
+// permite definir como seu tipo é impresso
+// quando utilizado com o operador de formato %s string em prints
+// basta implementar um método String para seu tipo
+
+func (b Bitcoin) String() string {
+	return fmt.Sprintf("%d BTC", b)
+}
+
+/*
 type Wallet struct {
 	balance int
 }
+/*
 
 /*
 func (w Wallet) Deposit(amount int) {
@@ -28,6 +52,7 @@ func (w Wallet) Balance() int {
 // https://gobyexample.com/pointers
 // https://gobyexample.com/methods
 
+/*
 func (w *Wallet) Deposit(amount int) {
 	fmt.Printf("memory address of balance in Deposit is %p \n", &w.balance)
 	w.balance += amount
@@ -35,5 +60,17 @@ func (w *Wallet) Deposit(amount int) {
 
 func (w *Wallet) Balance() int {
 	fmt.Printf("memory address of balance in Balance is %p \n", &w.balance)
+	return w.balance
+}
+*/
+
+func (w *Wallet) Deposit(amount Bitcoin) {
+	fmt.Printf("memory address of balance in Deposit is %p \n", &w.balance)
+	w.balance += amount
+}
+
+func (w *Wallet) Balance() Bitcoin {
+	fmt.Printf("memory address of balance in Balance is %p \n", &w.balance)
+	fmt.Printf("Balance is : %s \n", w.balance)
 	return w.balance
 }
