@@ -1,4 +1,4 @@
-package maps_0 //
+package maps_0 // Evitar erro do tipo pânico em tempo de execução devido tipo dados mapa nula (nil)
 
 import "errors"
 
@@ -36,4 +36,8 @@ func (d Dictionary) Search(word string) (string, error) {
 		return "", ErrNotFound
 	}
 	return definition, nil
+}
+
+func (d Dictionary) Add(word, definition string) {
+	d[word] = definition
 }
