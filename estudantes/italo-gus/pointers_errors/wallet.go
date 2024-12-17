@@ -1,24 +1,28 @@
 package pointers_erros // Delcaração de tipo de dados
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
+
+// https://pkg.go.dev/errors
+
+// Declaração de variável Global para tratamento de erro. Criando novo erro "personalizado"
+var ErrInsufficientFunds = errors.New("cannot withdraw, insufficient funds")
 
 // Delcaração de tipo de dados
 // https://go.dev/ref/spec#Type_declarations
-
 type Bitcoin int
 
-type Wallet struct {
-	balance Bitcoin
-}
-
-//// https://pkg.go.dev/fmt#Stringer
+// // https://pkg.go.dev/fmt#Stringer
 // A interface que é definida no pacote fmt
-// type Stringer interface {
-//     String() string
-// }
+//
+//	type Stringer interface {
+//	    String() string
+//	}
+//
 // permite definir como seu tipo é impresso
 // quando utilizado com o operador de formato %s string em prints
 // basta implementar um método String para seu tipo
-
 func (b Bitcoin) String() string {
 	return fmt.Sprintf("%d BTC", b)
 }
@@ -27,7 +31,11 @@ func (b Bitcoin) String() string {
 type Wallet struct {
 	balance int
 }
-/*
+*/
+
+type Wallet struct {
+	balance Bitcoin
+}
 
 /*
 func (w Wallet) Deposit(amount int) {
@@ -65,17 +73,35 @@ func (w *Wallet) Balance() int {
 */
 
 func (w *Wallet) Deposit(amount Bitcoin) {
-	fmt.Printf("memory address of balance in Deposit is %p \n", &w.balance)
+	//fmt.Printf("memory address of balance in Deposit is %p \n", &w.balance)
 	w.balance += amount
 }
 
 func (w *Wallet) Balance() Bitcoin {
-	fmt.Printf("memory address of balance in Balance is %p \n", &w.balance)
-	fmt.Printf("Balance is : %s \n", w.balance)
+	//fmt.Printf("memory address of balance in Balance is %p \n", &w.balance)
+	//fmt.Printf("Balance is : %s \n", w.balance)
 	return w.balance
 }
 
-func (w *Wallet) Withdraw(amount Bitcoin) {
+/*
+// Retorno do método como erro para ser tratado
+func (w *Wallet) Withdraw(amount Bitcoin) error {
 	fmt.Printf("memory address of balance in Withdraw is %p \n", &w.balance)
+	if amount > w.balance {
+		return errors.New("cannot withdraw, insufficient funds") // Criando novo erro "personalizado"
+		// Criação de erro
+		// https://pkg.go.dev/errors#New
+	}
 	w.balance -= amount
+	return nil
+}
+*/
+
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+	//fmt.Printf("memory address of balance in Withdraw is %p \n", &w.balance)
+	if amount > w.balance {
+		return ErrInsufficientFunds
+	}
+	w.balance -= amount
+	return nil
 }
