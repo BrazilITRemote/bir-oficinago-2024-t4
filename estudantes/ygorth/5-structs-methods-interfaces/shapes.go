@@ -13,6 +13,7 @@ type Rectangle struct {
 	Height float64
 }
 
+// https://google.github.io/styleguide/go/decisions.html#receiver-names
 func (r Rectangle) Area() float64 {
 	// fmt.Printf("BIR - type of r: %s\n", reflect.TypeOf(r))
 	return r.Width * r.Height
