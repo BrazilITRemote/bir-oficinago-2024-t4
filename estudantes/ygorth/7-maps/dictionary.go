@@ -1,3 +1,6 @@
+// refs:
+// https://dave.cheney.net/2016/04/07/constant-errors
+// https://dave.cheney.net/2017/04/30/if-a-map-isnt-a-reference-variable-what-is-it
 package maps
 
 type Dictionary map[string]string
@@ -53,6 +56,17 @@ func (d Dictionary) Update(word, definition string) error {
 	return nil
 }
 
-func (d Dictionary) Delete(word string) {
-	delete(d, word)
+func (d Dictionary) Delete(word string) error {
+	_, err := d.Search(word)
+
+	switch err {
+	case ErrNotFound:
+		return ErrWordDoesNotExist
+	case nil:
+		delete(d, word)
+	default:
+		return err
+	}
+
+	return nil
 }
