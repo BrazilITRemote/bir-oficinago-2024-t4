@@ -28,10 +28,10 @@ The workshop intends to study the content together and share experiences about l
 
 ## 🧑‍🏫 Study Group Mentor
 
-The mentor has:
+Ygor Almeida has:
 - **12 years of experience** as a backend developer.
 - **Experience in companies like Ubisoft Canada.**
-- **Over 8 years as a DevOps/Platform Engineer and recruiter**
+- **Over 8 years as a DevOps/Platform Engineer and recruiter.**
 
 ## 📅 Schedule
 
