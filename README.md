@@ -1,5 +1,5 @@
 # Go Workshop (Golang) 🚀
-Code generated as part of the Go workshop I conducted for the Brazil IT Remote community.
+Code generated as part of the Go workshop we conducted for the Brazil IT Remote community.
 
 ### Learn Golang with Tests (TDD) - Come join our community - [brazilitremote.org](https://www.brazilitremote.org/)
 ### 4th Quarter of 2024
