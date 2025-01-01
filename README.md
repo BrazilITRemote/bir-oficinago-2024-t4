@@ -1,53 +1,54 @@
-# Oficina de Go (Golang) 🚀
-### Aprenda Golang com Testes (TDD) - Venha conhecer nossa comunidade - [brazilitremote.org](https://www.brazilitremote.org/)
-### 4º Trimestre de 2024
+# Go Workshop (Golang) 🚀
+Code generated as part of the Go workshop I conducted for the Brazil IT Remote community.
 
+### Learn Golang with Tests (TDD) - Come join our community - [brazilitremote.org](https://www.brazilitremote.org/)
+### 4th Quarter of 2024
 
-## 📚 Conteúdo da Oficina
+## 📚 Workshop Content
 
-- **Inglês:** [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests/)
-- **Português do Brasil:** [Aprenda Go com Testes](https://larien.gitbook.io/aprenda-go-com-testes)
+- **English:** [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests/)
+- **Brazilian Portuguese:** [Aprenda Go com Testes](https://larien.gitbook.io/aprenda-go-com-testes)
 
-## 🎯 Objetivo
+## 🎯 Objective
 
-A oficina busca fortalecer a rede de contatos para trabalho remoto e imigração, além de aprimorar os conhecimentos técnicos dos participantes.
+The workshop intends to study the content together and share experiences about learning Go with TDD.
 
-## 🤝 Como Será a Nossa Interação
+## 🤝 How We Will Interact
 
-- **Discord:** Canal de voz exclusivo para participantes que se inscreverem pelo link abaixo.
-- **Transmissão ao Vivo:** Para quem prefere apenas assistir, as sessões estarão disponíveis no [YouTube](https://www.youtube.com). Interação via chat é bem-vinda!
-- **Limite de Vagas:** 10 pessoas.
+- **Discord:** Exclusive voice channel for participants who register through the link below.
+- **Live Streaming:** For those who prefer just to watch, the sessions will be available on [YouTube](https://youtu.be/EN6Ovhj6a00?si=Nmn-57Y1a7KKbg74). Interaction via chat is welcome!
+- **Limited Slots:** 15 people.
 
-## 👥 Quem Deve Se Inscrever?
+## 👥 Who Should Register?
 
-- **Público-Alvo:** Desenvolvedores, Engenheiros DevOps, Site Reliability Engineers e estudantes de TI.
-- **Pré-Requisitos:** Interesse em aprender Go e boas práticas, além de noções básicas de Git e GitHub.
-- **Benefícios Adicionais:** Participação na nossa organização no GitHub, o que pode aumentar suas chances de contratação.
-- **Networking:** Oportunidade de colaborar em projetos Open-Source da Linux Foundation.
+- **Target Audience:** Developers, DevOps Engineers, Site Reliability Engineers, and IT students.
+- **Prerequisites:** Interest in learning Go and best practices, as well as basic knowledge of Git and GitHub.
+- **Additional Benefits:** Participation in our GitHub organization, which can increase your chances of getting hired.
+- **Networking:** Opportunity to collaborate on Open-Source projects from the Linux Foundation.
 
-## 🧑‍🏫 Mentor do Grupo de Estudos
+## 🧑‍🏫 Study Group Mentor
 
-O mentor possui:
-- **12 anos de experiência** como desenvolvedor backend.
-- **Experiência em empresas como Ubisoft Canadá.**
-- **Mais de 8 anos como Engenheiro DevOps e recrutador** para vagas internacionais remotas.
+The mentor has:
+- **12 years of experience** as a backend developer.
+- **Experience in companies like Ubisoft Canada.**
+- **Over 8 years as a DevOps/Platform Engineer and recruiter**
 
-## 📅 Cronograma
+## 📅 Schedule
 
-- **Primeiro Encontro:** 22 de outubro, às 21h (GMT-3).
-  - **Duração:** Máximo de 1 hora (objetivo inicial de 30 minutos).
-  - **Agenda:** Discussão do conteúdo inicial, criação de contas no GitHub, configuração de repositórios pessoais e convites para a organização.
-- **Encontros Semanais:** Toda terça-feira, às 21h (GMT-3).
-  - **Objetivo:** Discussão dos tópicos estudados e definição dos próximos passos.
+- **First Meeting:** October 22, at 9 PM (GMT-3).
+  - **Duration:** Maximum of 1 hour (initial goal of 30 minutes).
+  - **Agenda:** Discussion of the initial content, creation of GitHub accounts, configuration of personal repositories, and invitations to the organization.
+- **Weekly Meetings:** Every Tuesday, at 9 PM (GMT-3).
+  - **Objective:** Discussion of the studied topics and definition of the next steps.
 
-## 📜 Regras
+## 📜 Rules
 
-- **Participação:** Máximo de 2 faltas permitidas até a conclusão do curso para que o participante tenha o nome registrado no nosso site (a ser lançado com a carga horária).
+- **Participation:** Maximum of 2 absences allowed until the end of the course for the participant to have their name registered on our website (to be launched with the course hours).
 
-## 🔗 Link de Inscrição
+## 🔗 Registration Link
 
-- **Inscreva-se Agora:** [Discord](https://discord.gg/nrgt2EQw3r?event=1295555565874843649)
+- **Register Now:** [Discord](https://discord.gg/nrgt2EQw3r?event=1295555565874843649)
 
-## 📍 Local de Encontro
+## 📍 Meeting Place
 
-- **Canal:** ⁠🤓| Go - Oficina no Discord
+- **Channel:** ⁠🤓| Go - Workshop on Discord
