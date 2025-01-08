@@ -1,8 +1,10 @@
+// This code requires Go 1.23+
 package main
 
 import (
 	"fmt"
 	"io"
+	"iter"
 	"os"
 	"time"
 )
@@ -54,8 +56,18 @@ func (c *ConfigurableSleeper) Sleep() {
 	c.sleep(c.duration)
 }
 
+func countDownFrom(from int) iter.Seq[int] {
+	return func(yield func(int) bool) {
+		for i := from; i > 0; i-- {
+			if !yield(i) {
+				return
+			}
+		}
+	}
+}
+
 func Countdown(out io.Writer, sleeper Sleeper) {
-	for i := countdownStart; i > 0; i-- {
+	for i := range countDownFrom(3) {
 		fmt.Fprintln(out, i)
 		sleeper.Sleep()
 	}
