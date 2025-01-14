@@ -3,4 +3,7 @@
 ├───3-iteration <br>
 ├───4-arrayslice <br>
 ├───5-structs-methods-interfaces <br>
-└───6-pointers-errors <br>
+├───6-pointers-errors <br>
+├───7-maps <br>
+├───8-dependency-injection <br>
+└───9-mocking <br>
