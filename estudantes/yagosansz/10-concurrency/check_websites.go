@@ -1,5 +1,7 @@
 package concurrency
 
+import "time"
+
 type WebsiteChecker func(string) bool
 
 func CheckWebsites(wc WebsiteChecker, urls []string) map[string]bool {
@@ -10,6 +12,9 @@ func CheckWebsites(wc WebsiteChecker, urls []string) map[string]bool {
 			results[url] = wc(url)
 		}()
 	}
+
+	// give enough time for goroutines to catch up!
+	time.Sleep(2 * time.Second)
 
 	return results
 }
