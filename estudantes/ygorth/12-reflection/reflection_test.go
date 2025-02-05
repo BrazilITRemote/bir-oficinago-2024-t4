@@ -16,7 +16,6 @@ type Profile struct {
 }
 
 func TestWalk(t *testing.T) {
-
 	cases := []struct {
 		Name          string
 		Input         interface{}
@@ -48,6 +47,14 @@ func TestWalk(t *testing.T) {
 		{
 			"nested fields",
 			Person{
+				"Chris",
+				Profile{33, "London"},
+			},
+			[]string{"Chris", "London"},
+		},
+		{
+			"pointers to things",
+			&Person{
 				"Chris",
 				Profile{33, "London"},
 			},

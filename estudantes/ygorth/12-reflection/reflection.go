@@ -1,15 +1,11 @@
 package reflection
 
 import (
-	"fmt"
 	"reflect"
 )
 
 func walk(x interface{}, fn func(input string)) {
-	val := reflect.ValueOf(x)
-
-	tipo := val.Type()
-	fmt.Printf("\n Tipo de valor: %s \n", tipo)
+	val := getValue(x)
 
 	// if val.Kind() != reflect.Struct {
 	// 	return
@@ -18,12 +14,21 @@ func walk(x interface{}, fn func(input string)) {
 	for i := 0; i < val.NumField(); i++ {
 		field := val.Field(i)
 
-		if field.Kind() == reflect.String {
+		switch field.Kind() {
+		case reflect.String:
 			fn(field.String())
-		}
-
-		if field.Kind() == reflect.Struct {
+		case reflect.Struct:
 			walk(field.Interface(), fn)
 		}
 	}
+}
+
+func getValue(x interface{}) reflect.Value {
+	val := reflect.ValueOf(x)
+
+	if val.Kind() == reflect.Pointer {
+		val = val.Elem()
+	}
+
+	return val
 }
