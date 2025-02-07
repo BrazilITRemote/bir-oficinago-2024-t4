@@ -16,7 +16,7 @@ func TestCounter(t *testing.T) {
 	})
 
 	t.Run("it runs safely concurrently", func(t *testing.T) {
-		wantedCount := 1000
+		wantedCount := 10000
 		counter := Counter{}
 
 		var wg sync.WaitGroup
