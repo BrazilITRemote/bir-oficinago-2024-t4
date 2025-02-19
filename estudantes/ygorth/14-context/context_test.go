@@ -41,19 +41,6 @@ func (s *SpyStore) Fetch(ctx context.Context) (string, error) {
 	}
 }
 
-// func (s *SpyStore) assertWasCancelled() {
-// 	s.t.Helper()
-// 	if !s.cancelled {
-// 		s.t.Error("store was not told to cancel")
-// 	}
-// }
-
-//	func (s *SpyStore) assertWasNotCancelled() {
-//		s.t.Helper()
-//		if s.cancelled {
-//			s.t.Error("store was told to cancel")
-//		}
-//	}
 type SpyResponseWriter struct {
 	written bool
 }
