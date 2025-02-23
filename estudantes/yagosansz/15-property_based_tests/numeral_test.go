@@ -83,3 +83,34 @@ func TestPropertiesOfConversion(t *testing.T) {
 		t.Error("failed checks", err)
 	}
 }
+
+func HasNoMoreThanThreeConsecutiveSymbols(roman string) bool {
+	count := 1
+	var prev rune
+
+	for i, char := range roman {
+		if i > 0 && char == prev {
+			count++
+			if count > 3 {
+				return false
+			} else {
+				count = 1
+			}
+		}
+		prev = char
+	}
+	return true
+}
+
+func TestPropertiesOfConsecutiveSymbols(t *testing.T) {
+	assertion := func(arabic uint16) bool {
+		roman := ConvertToRoman(arabic)
+		return HasNoMoreThanThreeConsecutiveSymbols(roman)
+	}
+
+	if err := quick.Check(assertion, &quick.Config{
+		MaxCount: 100,
+	}); err != nil {
+		t.Error("failed checks", err)
+	}
+}
