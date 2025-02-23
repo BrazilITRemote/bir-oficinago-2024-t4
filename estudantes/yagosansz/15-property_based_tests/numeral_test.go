@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"testing"
 	"testing/quick"
 )
@@ -69,7 +68,7 @@ func TestConvertingToArabic(t *testing.T) {
 func TestPropertiesOfConversion(t *testing.T) {
 	assertion := func(arabic uint16) bool {
 		if arabic > 3999 {
-			log.Println(arabic)
+			// log.Println(arabic)
 			return true
 		}
 		roman := ConvertToRoman(arabic)
@@ -86,16 +85,18 @@ func TestPropertiesOfConversion(t *testing.T) {
 
 func HasNoMoreThanThreeConsecutiveSymbols(roman string) bool {
 	count := 1
-	var prev rune
+	prev := rune(roman[0])
 
-	for i, char := range roman {
-		if i > 0 && char == prev {
+	for _, char := range roman[1:] {
+		// fmt.Printf("Current: %c, Previous: %c, Count: %d\n", char, prev, count)
+		if char == prev {
 			count++
 			if count > 3 {
+				// fmt.Println("found it")
 				return false
-			} else {
-				count = 1
 			}
+		} else {
+			count = 1
 		}
 		prev = char
 	}
@@ -104,13 +105,14 @@ func HasNoMoreThanThreeConsecutiveSymbols(roman string) bool {
 
 func TestPropertiesOfConsecutiveSymbols(t *testing.T) {
 	assertion := func(arabic uint16) bool {
+		if arabic > 3999 {
+			return true
+		}
 		roman := ConvertToRoman(arabic)
 		return HasNoMoreThanThreeConsecutiveSymbols(roman)
 	}
 
-	if err := quick.Check(assertion, &quick.Config{
-		MaxCount: 100,
-	}); err != nil {
+	if err := quick.Check(assertion, nil); err != nil {
 		t.Error("failed checks", err)
 	}
 }
