@@ -3,6 +3,8 @@ package blogposts_test
 import (
 	"testing"
 	"testing/fstest"
+
+	blogposts "github.com/BrazilITRemote/bir-oficinago-2024-t4/estudantes/yagosansz/17-reading_files/blogposts"
 )
 
 func TestNewBlogPosts(t *testing.T) {
