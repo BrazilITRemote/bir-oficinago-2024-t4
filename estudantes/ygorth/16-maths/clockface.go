@@ -1,6 +1,9 @@
 package clockface
 
-import "time"
+import (
+	"math"
+	"time"
+)
 
 // A Point represents a two-dimensional Cartesian coordinate
 type Point struct {
@@ -11,5 +14,9 @@ type Point struct {
 // SecondHand is the unit vector of the second hand of an analogue clock at time `t`
 // represented as a Point.
 func SecondHand(t time.Time) Point {
-	return Point{}
+	return Point{150, 60}
+}
+
+func secondsInRadians(t time.Time) float64 {
+	return math.Pi
 }
