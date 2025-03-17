@@ -1,18 +1,30 @@
 package blogposts
 
-import "io"
+import (
+	"bufio"
+	"io"
+)
 
 type Post struct {
-	Title string
+	Title       string
+	Description string
 }
 
+const (
+	titleSeparator       = "Title: "
+	descriptionSeparator = "Description: "
+)
+
 func newPost(postFile io.Reader) (Post, error) {
-	postData, err := io.ReadAll(postFile)
-	if err != nil {
-		return Post{}, err
+	scanner := bufio.NewScanner(postFile)
+
+	readLine := func() string {
+		scanner.Scan()
+		return scanner.Text()
 	}
 
-	// Here we are cutting out `Title: ` by slicing the string
-	post := Post{Title: string(postData)[7:]}
-	return post, nil
+	title := readLine()[len(titleSeparator):]
+	description := readLine()[len(descriptionSeparator):]
+
+	return Post{Title: title, Description: description}, nil
 }
