@@ -32,3 +32,7 @@ func secondHandPoint(t time.Time) Point {
 
 	return Point{x, y}
 }
+
+func minutesInRadians(t time.Time) float64 {
+	return math.Pi
+}
