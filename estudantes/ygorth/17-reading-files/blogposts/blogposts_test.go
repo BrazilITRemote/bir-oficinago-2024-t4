@@ -1,11 +1,20 @@
 package blogposts_test
 
 import (
+	"errors"
+	"io/fs"
 	"testing"
 	"testing/fstest"
 
 	blogposts "github.com/brazilitremote/blogposts"
 )
+
+type StubFailingFS struct {
+}
+
+func (s StubFailingFS) Open(name string) (fs.File, error) {
+	return nil, errors.New("oh no, i always fail")
+}
 
 func TestNewBlogPosts(t *testing.T) {
 	fs := fstest.MapFS{
