@@ -31,7 +31,10 @@ func getPost(fileSystem fs.FS, f fs.DirEntry) (Post, error) {
 		return Post{}, err
 	}
 	defer postFile.Close()
+	return newPost(postFile)
+}
 
+func newPost(postFile io.Reader) (Post, error) {
 	postData, err := io.ReadAll(postFile)
 	if err != nil {
 		return Post{}, err
