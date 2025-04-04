@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/brazilitremote/blogrenderer"
+	"github.com/approvals/go-approval-tests"
 )
 
 func TestRender(t *testing.T) {
