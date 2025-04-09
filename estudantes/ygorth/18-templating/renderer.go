@@ -4,6 +4,9 @@ import (
 	"embed"
 	"html/template"
 	"io"
+
+	"github.com/gomarkdown/markdown"
+	"github.com/gomarkdown/markdown/parser"
 )
 
 var (
@@ -11,31 +14,9 @@ var (
 	postTemplates embed.FS
 )
 
-const (
-	postTemplate = `<h1>{{.Title}}</h1><p>{{.Description}}</p>Tags: <ul>{{range .Tags}}<li>{{.}}</li>{{end}}</ul>`
-)
-
-// if you're continuing from the read files chapter, you shouldn't redefine this
-type Post struct {
-	Title, Description, Body string
-	Tags                     []string
-}
-
-func Render(w io.Writer, p Post) error {
-	templ, err := template.ParseFS(postTemplates, "templates/*.gohtml")
-	if err != nil {
-		return err
-	}
-
-	if err := templ.ExecuteTemplate(w, "blog.gohtml", p); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 type PostRenderer struct {
-	templ *template.Template
+	templ    *template.Template
+	mdParser *parser.Parser
 }
 
 func NewPostRenderer() (*PostRenderer, error) {
@@ -44,29 +25,27 @@ func NewPostRenderer() (*PostRenderer, error) {
 		return nil, err
 	}
 
-	return &PostRenderer{templ: templ}, nil
+	extensions := parser.CommonExtensions | parser.AutoHeadingIDs
+	parser := parser.NewWithExtensions(extensions)
+
+	return &PostRenderer{templ: templ, mdParser: parser}, nil
 }
 
 func (r *PostRenderer) Render(w io.Writer, p Post) error {
-
-	if err := r.templ.ExecuteTemplate(w, "blog.gohtml", p); err != nil {
-		return err
-	}
-
-	return nil
+	return r.templ.ExecuteTemplate(w, "blog.gohtml", newPostVM(p, r))
 }
 
 func (r *PostRenderer) RenderIndex(w io.Writer, posts []Post) error {
-	indexTemplate := `<ol>{{range .}}<li><a href="/post/{{.Title}}">{{.Title}}</a></li>{{end}}</ol>`
+	return r.templ.ExecuteTemplate(w, "index.gohtml", posts)
+}
 
-	templ, err := template.New("index").Parse(indexTemplate)
-	if err != nil {
-		return err
-	}
+type postViewModel struct {
+	Post
+	HTMLBody template.HTML
+}
 
-	if err := templ.Execute(w, posts); err != nil {
-		return err
-	}
-
-	return nil
+func newPostVM(p Post, r *PostRenderer) postViewModel {
+	vm := postViewModel{Post: p}
+	vm.HTMLBody = template.HTML(markdown.ToHTML([]byte(p.Body), r.mdParser, nil))
+	return vm
 }
