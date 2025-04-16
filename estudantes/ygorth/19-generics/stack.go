@@ -1,23 +1,20 @@
 package generics
 
-type StackOfInts = Stack
-type StackOfStrings = Stack
-
-type Stack struct {
-	values []interface{}
+type Stack[T any] struct {
+	values []T
 }
 
-func (s *Stack) Push(value interface{}) {
+func (s *Stack[T]) Push(value T) {
 	s.values = append(s.values, value)
 }
 
-func (s *Stack) IsEmpty() bool {
+func (s *Stack[T]) IsEmpty() bool {
 	return len(s.values) == 0
 }
 
-func (s *Stack) Pop() (interface{}, bool) {
+func (s *Stack[T]) Pop() (T, bool) {
 	if s.IsEmpty() {
-		var zero interface{}
+		var zero T
 		return zero, false
 	}
 
