@@ -55,14 +55,22 @@ func TestStack(t *testing.T) {
 		AssertTrue(t, myStackOfStrings.IsEmpty())
 	})
 
-	t.Run("interface stack DX is horrid", func(t *testing.T) {
+	t.Run("interface stack dx is horrid", func(t *testing.T) {
 		myStackOfInts := new(StackOfInts)
 
 		myStackOfInts.Push(1)
 		myStackOfInts.Push(2)
 		firstNum, _ := myStackOfInts.Pop()
 		secondNum, _ := myStackOfInts.Pop()
-		AssertEqual(t, firstNum+secondNum, 3)
+
+		// get our ints from out interface{}
+		reallyFirstNum, ok := firstNum.(int)
+		AssertTrue(t, ok) // need to check we definitely got an int out of the interface{}
+
+		reallySecondNum, ok := secondNum.(int)
+		AssertTrue(t, ok) // and again!
+
+		AssertEqual(t, reallyFirstNum+reallySecondNum, 3)
 	})
 
 }
